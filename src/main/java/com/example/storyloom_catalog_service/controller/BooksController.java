@@ -1,0 +1,29 @@
+package com.example.storyloom_catalog_service.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
+import java.util.Map;
+
+@RestController
+public class BooksController {
+
+    @Autowired
+    private BooksService booksService;
+
+
+
+    @GetMapping("")
+    public ResponseEntity<?> getBooks(@RequestBody List<Long> ids){
+        try{
+            return ResponseEntity.ok(booksService.getBooks(ids));
+        }catch (Exception e){
+            return ResponseEntity.badRequest().body(Map.of("Error", e.getMessage()));
+        }
+    }
+
+}
