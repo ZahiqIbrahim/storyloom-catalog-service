@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.ColumnDefault;
 
 import java.lang.reflect.Type;
+import java.util.List;
 
 @Entity
 @Table(name = "books")
@@ -19,9 +20,7 @@ public class Book {
    @GeneratedValue(strategy = GenerationType.IDENTITY)
    private Long id;
 
-   private String authorKey; //    "OL2653686A"
-
-   private String authorName; // "Robert C. Martin"
+   private List<String> authorName; // "Robert C. Martin"
 
     //"cover_i": 8065615,
    private String firstPublishYear; // : 2008,

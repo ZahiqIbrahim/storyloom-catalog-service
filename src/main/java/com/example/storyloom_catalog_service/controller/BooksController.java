@@ -39,7 +39,7 @@ public class BooksController {
 //        }
 //    }
 
-    @PostMapping("/getBook")
+    @GetMapping("/getBook")
     public ResponseEntity<?> getBook(@RequestBody String bookTitle){
         try{
 
