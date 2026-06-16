@@ -50,6 +50,17 @@ public class BooksController {
         }
     }
 
+    @GetMapping("/getBooks")
+    public ResponseEntity<?> getBooks(@RequestBody List<String> bookTitles){
+        try{
+
+            return ResponseEntity.ok(booksService.getBooks(bookTitles));
+
+        }catch (Exception e){
+            return ResponseEntity.badRequest().body(Map.of("Error", e.getMessage()));
+        }
+    }
+
 
 
 }

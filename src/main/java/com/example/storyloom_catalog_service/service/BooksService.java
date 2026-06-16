@@ -3,8 +3,10 @@ package com.example.storyloom_catalog_service.service;
 import com.example.storyloom_catalog_service.OpenLibraryClient;
 import com.example.storyloom_catalog_service.model.Book;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -14,6 +16,7 @@ public class BooksService {
 
     @Autowired
     private OpenLibraryClient openLibraryClient;
+
 
     public Book getBook(String bookTitle) {
         Book book = new Book();
@@ -44,6 +47,16 @@ public class BooksService {
         }
 
         return book;
+    }
+
+    public List<Book> getBooks(List<String> bookTitles) {
+
+        List<Book> books = new ArrayList<>();
+        for(String bookTitle : bookTitles){
+            Book book = getBook(bookTitle);
+            books.add(book);
+        }
+        return books;
     }
 
 
