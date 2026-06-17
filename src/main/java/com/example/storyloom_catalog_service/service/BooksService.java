@@ -1,10 +1,9 @@
 package com.example.storyloom_catalog_service.service;
 
-import com.example.storyloom_catalog_service.OpenLibraryClient;
+import com.example.storyloom_catalog_service.external_clients.OpenLibraryClient;
 import com.example.storyloom_catalog_service.model.Book;
 import com.example.storyloom_catalog_service.repo.BooksRepo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -103,9 +102,8 @@ public class BooksService {
     }
 
 
+    public List<Book> getTrendingBooks() {
 
-
-
-
-
+        return booksRepo.findAll();
+    }
 }

@@ -49,6 +49,17 @@ public class BooksController {
         }
     }
 
+    @GetMapping("/getTrendingBooks")
+    public ResponseEntity<?> getTrendingBooks(){
+        try{
+
+            return ResponseEntity.ok(booksService.getTrendingBooks());
+
+        }catch (Exception e){
+            return ResponseEntity.badRequest().body(Map.of("Error", e.getMessage()));
+        }
+    }
+
 
 
 }
