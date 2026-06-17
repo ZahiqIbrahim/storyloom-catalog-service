@@ -13,4 +13,9 @@ public interface    OpenLibraryClient {
     @GetMapping("/search.json")
     Map<String, Object> searchBook(@RequestParam("q") String query, @RequestParam("limit") int limit);
 
+   // https://openlibrary.org/trending/weekly.json
+
+    @GetMapping("/trending/weekly.json")
+    Map<String, Object> getTrendingBooks();
+
 }

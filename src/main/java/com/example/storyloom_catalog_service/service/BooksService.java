@@ -2,6 +2,7 @@ package com.example.storyloom_catalog_service.service;
 
 import com.example.storyloom_catalog_service.OpenLibraryClient;
 import com.example.storyloom_catalog_service.model.Book;
+import com.example.storyloom_catalog_service.repo.BooksRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
@@ -16,6 +17,9 @@ public class BooksService {
 
     @Autowired
     private OpenLibraryClient openLibraryClient;
+
+    @Autowired
+    private BooksRepo booksRepo;
 
 
     public Book getBook(String bookTitle) {
@@ -60,10 +64,48 @@ public class BooksService {
     }
 
 
-//    public Object getBooks(List<Long> ids) {
-//
-//
-//    }
+    public void getAndStoreTrendingBooks() {
+
+        booksRepo.deleteAll();
+
+        Map<String, Object> response = openLibraryClient.getTrendingBooks();
+
+
+        List<Map<String, Object>> works =  (List<Map<String, Object>>) response.get("works");
+
+        if (works == null || works.isEmpty()) {
+            throw new RuntimeException("Books not found");
+        }
+        List<Book> books = new ArrayList<>();
+
+        for(Map<String, Object> doc : works){
+
+            Book book = new Book();
+            book.setAuthorName((List<String>) doc.get("author_name"));
+            book.setKey((String) doc.get("key"));
+
+            book.setSubtitle((String) doc.get("subtitle"));
+            book.setTitle((String) doc.get("title"));
+            book.setFirstPublishYear(String.valueOf( doc.get("first_publish_year")));
+
+            String coverId = String.valueOf(doc.get("cover_i"));
+
+            if(coverId != null){
+                book.setCover(  "https://covers.openlibrary.org/b/id/"
+                        +  coverId
+                        + "-L.jpg");
+            }
+            books.add(book);
+        }
+
+        booksRepo.saveAll(books);
+
+    }
+
+
+
+
+
 
 
 }
