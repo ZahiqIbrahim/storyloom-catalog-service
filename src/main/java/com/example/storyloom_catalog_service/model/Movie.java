@@ -1,8 +1,6 @@
 package com.example.storyloom_catalog_service.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,6 +12,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Movie {
 
+     @Id
+     @GeneratedValue(strategy = GenerationType.IDENTITY)
+     private Long id;
+
      private String title;
 
      @Column(columnDefinition = "TEXT")
@@ -21,7 +23,7 @@ public class Movie {
 
      private String posterPath;   //"/74xTEgt7R36Fpooo50r9T25onhq.jpg"
 
-     private String release_date; //"2022-03-01",
+     private String releaseDate; //"2022-03-01",
 
-     private String vote_average; // 7.661,
+     private String voteAverage; // 7.661,
 }

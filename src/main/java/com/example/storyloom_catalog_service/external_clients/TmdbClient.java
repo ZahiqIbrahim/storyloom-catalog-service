@@ -1,11 +1,14 @@
 package com.example.storyloom_catalog_service.external_clients;
 
+import feign.Logger;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Map;
+
 
 
 
