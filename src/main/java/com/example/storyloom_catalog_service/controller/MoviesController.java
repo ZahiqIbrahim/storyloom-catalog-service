@@ -38,4 +38,15 @@ public class MoviesController {
             return ResponseEntity.badRequest().body(Map.of("Error", e.getMessage()));
         }
     }
+
+    @GetMapping("/getTrendingMovies")
+    public ResponseEntity<?> getTrendingMovies(){
+        try{
+
+            return ResponseEntity.ok(movieService.getTrendingMovies());
+
+        }catch (Exception e){
+            return ResponseEntity.badRequest().body(Map.of("Error", e.getMessage()));
+        }
+    }
 }
