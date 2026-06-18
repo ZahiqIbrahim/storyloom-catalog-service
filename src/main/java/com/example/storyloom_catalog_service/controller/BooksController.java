@@ -37,17 +37,7 @@ public class BooksController {
         }
     }
 
-    @GetMapping("/saveBooks")
-    public ResponseEntity<?> getBooks(){
-        try{
 
-            booksService.getAndStoreTrendingBooks();
-            return ResponseEntity.ok("books saved");
-
-        }catch (Exception e){
-            return ResponseEntity.badRequest().body(Map.of("Error", e.getMessage()));
-        }
-    }
 
     @GetMapping("/getTrendingBooks")
     public ResponseEntity<?> getTrendingBooks(){
