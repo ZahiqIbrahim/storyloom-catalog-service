@@ -19,6 +19,6 @@ public interface TmdbClient {
     Map<String, Object> searchMovie(@RequestParam("query") String query, @RequestParam("api_key") String apiKey);
 
     @GetMapping("/trending/movie/week")
-    Map<String, Object> getTrendingMovies(@RequestParam("api_key") String apiKey);
+    Map<String, Object> getTrendingMovies(@RequestParam("api_key") String apiKey,@RequestParam("page") int page);
 
 }
