@@ -1,6 +1,7 @@
 package com.example.storyloom_catalog_service;
 
 import com.example.storyloom_catalog_service.service.BooksService;
+import com.example.storyloom_catalog_service.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -13,8 +14,11 @@ import org.springframework.scheduling.annotation.Scheduled;
 @EnableFeignClients
 @EnableScheduling
 public class StoryloomCatalogServiceApplication {
+
 	@Autowired
 	private BooksService booksService;
+	@Autowired
+	private MovieService movieService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(StoryloomCatalogServiceApplication.class, args);
@@ -24,7 +28,7 @@ public class StoryloomCatalogServiceApplication {
 	public void updateDb(){
 
 		booksService.getAndStoreTrendingBooks();
-
+		movieService.getAndStoreTrendingMovies();
 	}
 
 }
