@@ -3,10 +3,7 @@ package com.example.storyloom_catalog_service.controller;
 import com.example.storyloom_catalog_service.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
@@ -18,7 +15,7 @@ public class MoviesController {
     @Autowired
     private MovieService movieService;
 
-    @GetMapping("/getMovie")
+    @PostMapping("/getMovie")
     public ResponseEntity<?> getMovie(@RequestBody String movieTitle){
         try{
 
@@ -29,7 +26,7 @@ public class MoviesController {
         }
     }
 
-    @GetMapping("/getMovies")
+    @PostMapping("/getMovies")
     public ResponseEntity<?> getMovies(@RequestBody List<String> movieTitles){
         try{
             return ResponseEntity.ok(movieService.getMovies(movieTitles));
@@ -39,7 +36,7 @@ public class MoviesController {
         }
     }
 
-    @GetMapping("/getTrendingMovies")
+    @PostMapping("/getTrendingMovies")
     public ResponseEntity<?> getTrendingMovies(){
         try{
 

@@ -15,7 +15,7 @@ public class BooksController {
     @Autowired
     private BooksService booksService;
 
-    @GetMapping("/getBook")
+    @PostMapping("/getBook")
     public ResponseEntity<?> getBook(@RequestBody String bookTitle){
         try{
 
@@ -26,7 +26,7 @@ public class BooksController {
         }
     }
 
-    @GetMapping("/getBooks")
+    @PostMapping("/getBooks")
     public ResponseEntity<?> getBooks(@RequestBody List<String> bookTitles){
         try{
 
@@ -39,7 +39,7 @@ public class BooksController {
 
 
 
-    @GetMapping("/getTrendingBooks")
+    @PostMapping("/getTrendingBooks")
     public ResponseEntity<?> getTrendingBooks(){
         try{
             return ResponseEntity.ok(booksService.getTrendingBooks());
