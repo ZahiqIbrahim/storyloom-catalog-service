@@ -370,16 +370,7 @@ tmdb.api.key=${TMDB_API_KEY}
 
 ---
 
-## 🔒 Security Notes
 
-> ⚠️ **Important:** The current `application.properties` contains hardcoded database credentials and API keys. Before deploying to any shared or production environment:
-
-1. **Never commit secrets to version control.** Add `application.properties` (or a secrets file) to `.gitignore`.
-2. **Use environment variables** or a **secrets manager** (e.g., Spring Cloud Config, HashiCorp Vault) for sensitive values.
-3. **Rotate API keys** if they have been exposed in a public repository.
-4. Consider adding **authentication and authorization** to the REST endpoints (e.g., Spring Security, JWT filters).
-
----
 
 ## 📄 License
 
