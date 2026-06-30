@@ -142,7 +142,9 @@ public class MovieService {
 
     public List<Movie> getTrendingMovies() {
 
-        moviesRepo.deleteAll();
+            if(null == moviesRepo.findAll() || moviesRepo.findAll().isEmpty()){
+                getAndStoreTrendingMovies();
+            }
         return moviesRepo.findAll();
     }
 }

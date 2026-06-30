@@ -104,6 +104,10 @@ public class BooksService {
 
     public List<Book> getTrendingBooks() {
 
+        if(null == booksRepo.findAll() || booksRepo.findAll().isEmpty()){
+            getAndStoreTrendingBooks();
+        }
+
         return booksRepo.findAll();
     }
 }
